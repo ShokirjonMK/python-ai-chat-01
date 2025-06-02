@@ -1,10 +1,11 @@
-from sentence_transformers import SentenceTransformer, util
 import json
 import os
+from sentence_transformers import SentenceTransformer, util
 
 BASE_DIR = os.path.dirname(__file__)
 qa_path = os.path.join(BASE_DIR, "qa_data.json")
 
+# Sentence-BERT modeli (multilingual va yengil)
 model = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')
 
 
@@ -15,6 +16,7 @@ def load_qa():
 
 def get_best_answer(category, user_question):
     data = load_qa()
+
     if category not in data:
         return f"Kategoriya topilmadi: {category}"
 
@@ -22,15 +24,14 @@ def get_best_answer(category, user_question):
     questions = [item['question'] for item in qa_pairs]
     answers = [item['answer'] for item in qa_pairs]
 
-    embeddings = model.encode(
-        questions + [user_question], convert_to_tensor=True)
-    user_emb = embeddings[-1]
-    sims = util.pytorch_cos_sim(user_emb, embeddings[:-1]).squeeze()
+    question_embeddings = model.encode(questions, convert_to_tensor=True)
+    user_embedding = model.encode(user_question, convert_to_tensor=True)
 
-    top_score = sims.max().item()
-    top_index = sims.argmax().item()
+    similarities = util.cos_sim(user_embedding, question_embeddings)[0]
+    best_score = similarities.max().item()
+    best_index = similarities.argmax().item()
 
-    if top_score < 0.5:
-        return "Mazmunga mos savol topilmadi. Iltimos, aniqroq savol bering."
+    if best_score < 0.5:
+        return "Savol ma’nosi aniq topilmadi. Iltimos, savolni yanada aniqroq shaklda yozing."
 
-    return answers[top_index]
+    return answers[best_index]
