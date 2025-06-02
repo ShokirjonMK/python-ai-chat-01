@@ -1,0 +1,18 @@
+{
+  "dasturlash": [
+    {
+      "question": "Python qanday dasturlash tili?",
+      "answer": "Python – yuqori darajadagi, o‘qilishi oson, keng qo‘llaniladigan dasturlash tilidir."
+    },
+    {
+      "question": "OOP nima?",
+      "answer": "OOP – obyektga yo‘naltirilgan dasturlash, u klasslar va obyektlar asosida ishlaydi."
+    }
+  ],
+  "matematika": [
+    {
+      "question": "Hosila nima?",
+      "answer": "Hosila – funksiyaning o‘sish tezligini bildiruvchi qiymatdir."
+    }
+  ]
+}

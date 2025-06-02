@@ -1,0 +1,23 @@
+{
+  "dasturlash": [
+    "Python qanday til?",
+    "OOP nima?",
+    "C++ va Java o'xshashliklari",
+    "Funksiya va metod farqi"
+  ],
+  "matematika": [
+    "Tenglama qanday yechiladi?",
+    "Integrallar haqida ma'lumot bering",
+    "Hosila nima?",
+    "Sinus va kosinus funksiyalari"
+  ],
+  "tarix": [
+    "Temuriylar davri haqida gapirib bering",
+    "Birinchi jahon urushi qachon boshlangan?",
+    "O‘zbekiston mustaqillikka qanday erishgan?"
+  ],
+  "huquq": [
+    "Huquqshunosda bo'lishi kerak bo'lgan ko'nikmalar",
+    "test"
+  ]
+}
