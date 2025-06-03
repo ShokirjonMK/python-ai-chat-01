@@ -10,6 +10,22 @@ services:
     depends_on:
       - mongo
 
+  # docker-compose.yml
+  ollama:
+    image: ollama/ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/data
+  
+  chatbot:
+    build: .
+    depends_on:
+      - ollama
+    environment:
+      - OLLAMA_URL=http://ollama:11434
+
+
   mongo:
     image: mongo
     restart: always
@@ -20,3 +36,4 @@ services:
 
 volumes:
   mongo_data:
+  ollama_data:

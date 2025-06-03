@@ -10,7 +10,7 @@ def generate_llm_response(prompt: str) -> str:
                 "prompt": prompt,
                 "stream": False
             },
-            timeout=30
+            timeout=300
         )
         data = res.json()
         return data.get("response", "Kechirasiz, LLM javob bera olmadi.")
