@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+from fastapi import Request
 from app.db import qa_collection
 from app.models import QAItem
 from bson import ObjectId
@@ -9,7 +10,17 @@ router = APIRouter(prefix="/qa", tags=["QA"])
 
 
 @router.get("/")
-def list_qa():
+def list_qa(category_id: Optional[str] = None, search: Optional[str] = None):
+    filter_query = {}
+
+    if category_id:
+        filter_query["category_id"] = category_id
+
+    if search:
+        filter_query["question"] = {"$regex": search, "$options": "i"}
+
+    items = qa_collection.find(filter_query)
+
     return [
         {
             "id": str(item["_id"]),
@@ -17,8 +28,9 @@ def list_qa():
             "question": item["question"],
             "answer": item["answer"]
         }
-        for item in qa_collection.find()
+        for item in items
     ]
+
 
 
 @router.post("/")
