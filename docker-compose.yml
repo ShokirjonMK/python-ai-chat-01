@@ -1,9 +1,17 @@
-version: '3'
+version: "3.8"
+
 services:
-  uzchat:
+  app:
     build: .
     ports:
       - "8000:8000"
-    volumes:
-      - .:/app
+    environment:
+      - MONGO_URI=mongodb://mongo:27017
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
     restart: always
+    ports:
+      - "27017:27017"

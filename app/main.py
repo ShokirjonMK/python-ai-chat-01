@@ -1,17 +1,18 @@
 from fastapi import FastAPI, Query
-from app.model.similar_qa import get_best_answer
+from app.routes import category, qa
+from app.services.ai import get_best_answer
 
 app = FastAPI()
 
+app.include_router(category.router)
+app.include_router(qa.router)
+
 
 @app.get("/ask")
-def ask(
-    category: str = Query(..., description="Kategoriya nomi"),
-    question: str = Query(..., description="Savolingiz")
-):
-    answer = get_best_answer(category, question)
+def ask(category_id: str = Query(...), question: str = Query(...)):
+    answer = get_best_answer(category_id, question)
     return {
-        "success": True,
-        "category": category,
+        "category_id": category_id,
+        "question": question,
         "answer": answer
     }
