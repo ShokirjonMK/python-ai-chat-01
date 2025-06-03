@@ -5,6 +5,7 @@ from app.models import QAItem
 from bson import ObjectId
 from typing import List
 from fastapi import HTTPException
+from typing import Optional
 
 router = APIRouter(prefix="/qa", tags=["QA"])
 
