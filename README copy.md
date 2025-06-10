@@ -26,3 +26,10 @@ ollama download:
 ```huggingface-cli login```
 
 ```ollama run hf.co/google/gemma-2b-it```
+
+
+# To'xtatish va o'chirish:
+
+```docker stop ollama``` 
+
+```docker rm ollama```
