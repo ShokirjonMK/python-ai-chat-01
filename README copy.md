@@ -18,9 +18,10 @@ ollama download:
 
 ```ollama run gemma:2b```
 
+```ollama run gemma:7b```
 
-#####################3
-gemma How to use from Ollama
+
+# gemma How to use from Ollama
 
 ```huggingface-cli login```
 
