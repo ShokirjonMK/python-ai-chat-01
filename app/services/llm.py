@@ -7,7 +7,7 @@ def generate_llm_response(prompt: str) -> str:
             "http://localhost:11434/api/generate",
             json={
                 "model": "llama3",
-                "prompt": "Faqat o'zbek tilida javob ber. Savol: " + prompt,
+                "prompt": prompt,
                 "stream": False
             },
             timeout=300
