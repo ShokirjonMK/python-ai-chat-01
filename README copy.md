@@ -9,11 +9,13 @@ ollama download:
 
 # llama3 ni ishga tushurish
 ```docker exec -it ollama bash```
+
 ```ollama run llama3```
 
 
 # gemma ni ishga tushurish
 ```docker exec -it ollama bash```
+
 ```ollama run gemma:2b```
 
 
@@ -21,4 +23,5 @@ ollama download:
 gemma How to use from Ollama
 
 ```huggingface-cli login```
+
 ```ollama run hf.co/google/gemma-2b-it```
