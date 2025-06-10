@@ -16,7 +16,6 @@ docker exec -it ollama bash
 ollama run gemma:2b
 
 
-
 #####################3
 gemma How to use from Ollama
 
